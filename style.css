@@ -1,9 +1,308 @@
+/* =========================================================
+CSS VARIABLES
+Defining our colors here means we only have to change
+them in one place if we ever want a new color scheme.
+========================================================= */
+:root {
+--color-cream: #fdf8f0; /* main background */
+--color-white: #ffffff; /* card backgrounds */
+--color-green-dark: #3f5c3f; /* deep leafy green, used for text/banner */
+--color-green-light: #7a9b6e; /* softer green accent */
+--color-amber: #e2a63c; /* golden mum color */
+--color-pink: #d98ba0; /* dusty pink mum color */
+--color-plum: #8a5a8f; /* purple mum color */
+--color-text: #4a453f; /* warm dark gray for body text */
+
+--shadow-soft: 0 4px 14px rgba(63, 92, 63, 0.12);
+--radius-medium: 14px;
+--radius-large: 24px;
+}
+
+/* =========================================================
+GLOBAL / RESET STYLES
+========================================================= */
+* {
+box-sizing: border-box; /* padding and borders no longer add to element width */
+margin: 0;
+padding: 0;
+}
+
+body {
+font-family: 'Quicksand', sans-serif;
+background-color: var(--color-cream);
+color: var(--color-text);
+line-height: 1.6;
+}
+
+h1, h2, h3 {
+font-family: 'Playfair Display', serif;
+color: var(--color-green-dark);
+}
+
+img {
+max-width: 100%; /* images never overflow their container */
+height: auto;
+display: block;
+}
+
+/* A shared wrapper style used by every section so content
+lines up neatly and doesn't stretch too wide on big screens */
+.section {
+max-width: 1000px;
+margin: 0 auto; /* centers the section horizontally */
+padding: 60px 24px;
+}
+
+.section-title {
+text-align: center;
+font-size: 2rem;
+margin-bottom: 12px;
+}
+
+.section-intro-text {
+text-align: center;
+max-width: 600px;
+margin: 0 auto 40px auto;
+color: var(--color-text);
+}
+
+/* =========================================================
+HEADER / BANNER
+A full-width band with a warm gradient background
+========================================================= */
 .banner {
-    color: blue;
-    border: 4px solid yellow;
-    padding: 25px;
-    border-radius: 20px;
-    width: 100%;
-    text-align: center;
-    box-sizing: border-box;
+width: 100%;
+padding: 90px 24px;
+text-align: center;
+
+/* Gradient inspired by autumn mums: deep green into warm amber */
+background: linear-gradient(135deg, var(--color-green-dark) 0%, #6b8f5a 55%, var(--color-amber) 100%);
+}
+
+.banner-title {
+color: var(--color-white);
+font-size: 3.5rem;
+letter-spacing: 1px;
+text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.banner-subtitle {
+color: var(--color-cream);
+font-family: 'Quicksand', sans-serif;
+font-size: 1.25rem;
+font-weight: 500;
+margin-top: 12px;
+letter-spacing: 0.5px;
+}
+
+/* =========================================================
+INTRODUCTION SECTION
+Image and text placed side by side using Flexbox
+========================================================= */
+.intro-content {
+display: flex;
+flex-wrap: wrap; /* allows items to stack on small screens */
+align-items: center;
+gap: 32px;
+}
+
+.intro-image {
+flex: 1 1 320px; /* grow, shrink, base width of 320px */
+border-radius: var(--radius-large);
+box-shadow: var(--shadow-soft);
+}
+
+.intro-text {
+flex: 1 1 320px;
+}
+
+.intro-text h2 {
+margin-bottom: 14px;
+}
+
+.intro-text p {
+margin-bottom: 14px;
+}
+
+/* =========================================================
+ABOUT MUMS SECTION
+Four small info cards arranged with Flexbox
+========================================================= */
+.about-section {
+background-color: var(--color-white);
+border-radius: var(--radius-large);
+box-shadow: var(--shadow-soft);
+}
+
+.about-grid {
+display: flex;
+flex-wrap: wrap;
+gap: 24px;
+margin-top: 32px;
+}
+
+.about-card {
+flex: 1 1 220px; /* each card grows/shrinks, ~220px minimum */
+background-color: var(--color-cream);
+border-radius: var(--radius-medium);
+padding: 20px;
+border-left: 4px solid var(--color-green-light);
+}
+
+.about-card h3 {
+font-size: 1.1rem;
+margin-bottom: 8px;
+}
+
+/* =========================================================
+TYPES OF MUMS SECTION
+A row of cards that wraps on smaller screens
+========================================================= */
+.card-container {
+display: flex;
+flex-wrap: wrap;
+gap: 24px;
+justify-content: center;
+}
+
+.mum-card {
+flex: 1 1 220px;
+max-width: 260px;
+background-color: var(--color-white);
+border-radius: var(--radius-medium);
+overflow: hidden; /* keeps the image corners rounded too */
+box-shadow: var(--shadow-soft);
+text-align: center;
+padding-bottom: 18px;
+}
+
+.mum-card-image {
+width: 100%;
+height: 170px;
+object-fit: cover; /* fills the space without distorting the image */
+}
+
+.mum-card-title {
+margin: 14px 0 6px 0;
+color: var(--color-plum);
+font-size: 1.15rem;
+}
+
+.mum-card-description {
+padding: 0 16px;
+font-size: 0.95rem;
+}
+
+/* =========================================================
+GROWING MUMS SECTION
+Care tips shown as icon cards
+========================================================= */
+.growing-section {
+background-color: var(--color-green-dark);
+border-radius: var(--radius-large);
+color: var(--color-cream);
+}
+
+.growing-section .section-title {
+color: var(--color-white);
+}
+
+.care-grid {
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+margin-top: 32px;
+justify-content: center;
+}
+
+.care-card {
+flex: 1 1 180px;
+max-width: 200px;
+background-color: rgba(255, 255, 255, 0.08);
+border-radius: var(--radius-medium);
+padding: 24px 16px;
+text-align: center;
+}
+
+.care-card h3 {
+color: var(--color-white);
+font-size: 1.05rem;
+margin-bottom: 8px;
+}
+
+.care-card p {
+font-size: 0.9rem;
+color: var(--color-cream);
+}
+
+.care-icon {
+font-size: 2rem;
+display: block;
+margin-bottom: 10px;
+}
+
+/* =========================================================
+FUN FACTS SECTION
+Colorful alternating cards
+========================================================= */
+.facts-grid {
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+margin-top: 32px;
+}
+
+.fact-card {
+flex: 1 1 260px;
+border-radius: var(--radius-medium);
+padding: 22px;
+font-weight: 500;
+color: var(--color-white);
+box-shadow: var(--shadow-soft);
+}
+
+/* Give each fact card a different mum-inspired color
+by targeting them in order (nth-child) */
+.fact-card:nth-child(6n+1) { background-color: var(--color-pink); }
+.fact-card:nth-child(6n+2) { background-color: var(--color-amber); }
+.fact-card:nth-child(6n+3) { background-color: var(--color-plum); }
+.fact-card:nth-child(6n+4) { background-color: var(--color-green-light); }
+.fact-card:nth-child(6n+5) { background-color: var(--color-plum); }
+.fact-card:nth-child(6n+6) { background-color: var(--color-pink); }
+
+/* =========================================================
+FOOTER
+========================================================= */
+.site-footer {
+text-align: center;
+padding: 32px 24px;
+background-color: var(--color-green-dark);
+color: var(--color-cream);
+font-size: 0.95rem;
+}
+
+/* =========================================================
+RESPONSIVE ADJUSTMENTS
+Fine-tuning for smaller phone screens
+========================================================= */
+@media (max-width: 600px) {
+.banner {
+padding: 60px 20px;
+}
+
+.banner-title {
+font-size: 2.4rem;
+}
+
+.banner-subtitle {
+font-size: 1rem;
+}
+
+.section {
+padding: 40px 18px;
+}
+
+.section-title {
+font-size: 1.6rem;
+}
 }
