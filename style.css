@@ -32,6 +32,7 @@ font-family: 'Quicksand', sans-serif;
 background-color: var(--color-cream);
 color: var(--color-text);
 line-height: 1.6;
+align-items: center;
 }
 
 h1, h2, h3 {
